@@ -13,14 +13,14 @@ public class HelloWorldController
 {
     @Autowired
     HelloWorldServiece  hws;
-
+//  ShasiKumarR
     @GetMapping("/abc")
     public String hello()
     {
         return hws.get();
         //System.out.println("hello world");
         //return "Hello From Hello World dc from rest controller";
-    }
+    }//|\\
 
     @PostMapping("/abc")
     public String postMethod()
@@ -68,22 +68,9 @@ public class HelloWorldService{
         return "Employee Deleted Successfully ! ";
     }
 
+
     @PutMapping
-    
 
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
