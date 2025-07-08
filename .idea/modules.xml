@@ -2,8 +2,12 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+<<<<<<< HEAD
       <module fileurl="file://$PROJECT_DIR$/Day4-SpringBootJavaIntern/Day4-SpringBootJavaIntern.iml" filepath="$PROJECT_DIR$/Day4-SpringBootJavaIntern/Day4-SpringBootJavaIntern.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/Day4-TaskSpringBootJava.iml" filepath="$PROJECT_DIR$/.idea/Day4-TaskSpringBootJava.iml" />
+=======
+      <module fileurl="file://$PROJECT_DIR$/.idea/Day-2.iml" filepath="$PROJECT_DIR$/.idea/Day-2.iml" />
+>>>>>>> e0b32cec6e3fcde3c77ffdbabf9a32b1616cd149
     </modules>
   </component>
 </project>
