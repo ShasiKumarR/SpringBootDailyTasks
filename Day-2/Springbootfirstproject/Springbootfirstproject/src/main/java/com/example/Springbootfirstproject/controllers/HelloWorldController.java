@@ -20,7 +20,7 @@ public class HelloWorldController
         return hws.get();
         //System.out.println("hello world");
         //return "Hello From Hello World dc from rest controller";
-    }//|\\
+    }
 
     @PostMapping("/abc")
     public String postMethod()
