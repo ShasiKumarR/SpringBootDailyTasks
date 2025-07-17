@@ -16,7 +16,7 @@ public class ClacController {
     @Autowired
     private Clacservice clacservice;
 
-    
+
     @GetMapping("/add")
     public int  add(@RequestBody Calc calc)
     {

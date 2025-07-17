@@ -1,6 +1,7 @@
 package com.example.springbootfirst.services;
 
 import com.example.springbootfirst.jwt.JwtTokenProvider;
+import com.example.springbootfirst.models.LoginResponse;
 import com.example.springbootfirst.models.RegisterDetails;
 import com.example.springbootfirst.models.Roles;
 import com.example.springbootfirst.models.UserDetailsDto;
@@ -18,6 +19,7 @@ import org.springframework.stereotype.Service;
 import java.util.HashSet;
 import java.util.Optional;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 @Service
 public class AuthService {
@@ -25,6 +27,8 @@ public class AuthService {
     @Autowired
     RegisterRepo registerRepo;
 
+    @Autowired
+    LoginResponse loginResponse ;
 
     @Autowired
     private JwtTokenProvider jwtTokenProvider;
@@ -60,16 +64,26 @@ public class AuthService {
         return "Employee Added Successfully";
     }
 
-    public String authenticateAndGenerateToken(String username, String password) {
+    public LoginResponse authenticateAndGenerateToken(String username, String password) {
         Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(username, password)
         );
 
         String token = jwtTokenProvider.generateToken(authentication);
         System.out.println("Generated Token: " + token); // Debug log
-        return  token;
-//
-//        return new JwtResponseDto(token, "Bearer");
+
+        RegisterDetails emp1 = registerDetailsRepository.findByUserName(username).orElse(null);
+
+        Set<String> roleNames = emp1.getRoles().stream()
+                .map(role -> role.getRoleName())
+                .collect(Collectors.toSet());
+
+        loginResponse.setToken(token);
+        loginResponse.setRoles(roleNames);
+        loginResponse.setUserName(username);
+
+
+        return  loginResponse;
     }
 
     public Optional<RegisterDetails> findByUsername(String userName) {
